@@ -16,20 +16,20 @@ test('clearModule("fixture", {children: true})', t => {
 	m(id);
 	t.is(require(id)(), 1);
 
-    const path = require('path');
-    const resolveFrom = require('resolve-from');
-    const callerPath = require('caller-path');
-    const id2 = 'request';
-    const id2Path = resolveFrom(path.dirname(callerPath()), id2);
-    const id2Dir = path.dirname(id2Path);
-    const scriptsCachedBeforeRequire = Object.keys(require.cache).length; // 5
-    require('request');
-    const scriptsCachedAfterRequire = Object.keys(require.cache).length; // 176
-    console.log(scriptsCachedBeforeRequire);
-    require(id2)();
-    console.log(scriptsCachedAfterRequire);
+	const path = require('path');
+	const resolveFrom = require('resolve-from');
+	const callerPath = require('caller-path');
+	const id2 = 'request';
+	const id2Path = resolveFrom(path.dirname(callerPath()), id2);
+	const id2Dir = path.dirname(id2Path);
+	const scriptsCachedBeforeRequire = Object.keys(require.cache).length; // 5
+	require('request');
+	const scriptsCachedAfterRequire = Object.keys(require.cache).length; // 176
+	console.log(scriptsCachedBeforeRequire);
+	require(id2)();
+	console.log(scriptsCachedAfterRequire);
 	t.is(require(id)(), 13);
-    //'/home/ryzen/Downloads/git/clear-module/test/node_modules/extend/index.js'
+	//'/home/ryzen/Downloads/git/clear-module/test/node_modules/extend/index.js'
 });
 
 test('clearModule.all()', t => {
