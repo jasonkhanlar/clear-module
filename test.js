@@ -32,7 +32,6 @@ test('clearModule("fixture", {children: true})', t => {
 	console.log(scriptsCachedBeforeRequire);
 	console.log(scriptsCachedAfterRequire);
 	t.is(require(id)(), 13);
-	//'/home/ryzen/Downloads/git/clear-module/test/node_modules/extend/index.js'
 });
 
 test('clearModule.all()', t => {
