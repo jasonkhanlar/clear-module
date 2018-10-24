@@ -9,19 +9,27 @@ test('clearModule()', t => {
 	t.is(require(id)(), 1);
 });
 
-test('clearModule("fixture", { children: true })', t => {
-	// Variable t === ExecutionContext {}
-	console.log('what is t.is', t.is);
-	console.log('what are t keys', Object.keys(t));
-	console.log('what are t values', Object.values(t));
-	const id = './fixturefail';
-	// What does this do?
+test('clearModule("fixture", {children: true})', t => {
+	const id = './fixture';
 	t.is(require(id)(), 1);
-	// What does this do?
 	t.is(require(id)(), 2);
-	m(id, {children: true});
-	// What does this do?
+	m(id);
 	t.is(require(id)(), 1);
+
+    const path = require('path');
+    const resolveFrom = require('resolve-from');
+    const callerPath = require('caller-path');
+    const id2 = 'request';
+    const id2Path = resolveFrom(path.dirname(callerPath()), id2);
+    const id2Dir = path.dirname(id2Path);
+    const scriptsCachedBeforeRequire = Object.keys(require.cache).length; // 5
+    require('request');
+    const scriptsCachedAfterRequire = Object.keys(require.cache).length; // 176
+    console.log(scriptsCachedBeforeRequire);
+    require(id2)();
+    console.log(scriptsCachedAfterRequire);
+	t.is(require(id)(), 13);
+    //'/home/ryzen/Downloads/git/clear-module/test/node_modules/extend/index.js'
 });
 
 test('clearModule.all()', t => {
