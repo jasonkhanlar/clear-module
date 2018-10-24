@@ -24,10 +24,9 @@ test('clearModule("fixture", {children: true})', t => {
 	const id2Dir = path.dirname(id2Path);
 	console.log(id2Dir);
 	const scriptsCachedBeforeRequire = Object.keys(require.cache).length; // 5
-	require('request');
+	require(id2)();
 	const scriptsCachedAfterRequire = Object.keys(require.cache).length; // 176
 	console.log(scriptsCachedBeforeRequire);
-	require(id2)();
 	console.log(scriptsCachedAfterRequire);
 	t.is(require(id)(), 13);
 	//'/home/ryzen/Downloads/git/clear-module/test/node_modules/extend/index.js'
