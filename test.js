@@ -9,6 +9,17 @@ test('clearModule()', t => {
 	t.is(require(id)(), 1);
 });
 
+test('clearModule("fixture", { children: true })', t => {
+	console.log('what is t', t);
+	console.log('what is m', m);
+	console.log('what is m.toString', m.toString());
+	const id = './fixture';
+	t.is(require(id)(), 1);
+	t.is(require(id)(), 2);
+	m(id);
+	t.is(require(id)(), 1);
+});
+
 test('clearModule.all()', t => {
 	t.true(Object.keys(require.cache).length > 0);
 	m.all();
