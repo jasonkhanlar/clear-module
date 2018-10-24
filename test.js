@@ -10,7 +10,7 @@ test('clearModule()', t => {
 });
 
 test('clearModule("fixture", { children: true })', t => {
-	// t === ExecutionContext {}
+	// Variable t === ExecutionContext {}
 	console.log('what is t.is', t.is);
 	console.log('what are t keys', Object.keys(t));
 	console.log('what are t values', Object.values(t));
