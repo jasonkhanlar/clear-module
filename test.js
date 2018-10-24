@@ -13,7 +13,7 @@ test('clearModule("fixture", { children: true })', t => {
 	console.log('what is t', t);
 	console.log('what is m', m);
 	console.log('what is m.toString', m.toString());
-	const id = './fixture';
+	const id = './fixturefail';
 	t.is(require(id)(), 1);
 	t.is(require(id)(), 2);
 	m(id);
