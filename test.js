@@ -16,15 +16,18 @@ test('clearModule("fixture", {children: true})', t => {
 	m(id);
 	t.is(require(id)(), 1);
 
+	const scriptsCachedBeforeRequire = Object.keys(require.cache).length; // 5
 	const path = require('path');
-	const resolveFrom = require('resolve-from');
-	const callerPath = require('caller-path');
-	const id2 = 'request';
+	const id2 = 'resolve-from';
+	const resolveFrom = require(id2);
+	const id3 = 'caller-path';
+	const callerPath = require(id3);
 	const id2Path = resolveFrom(path.dirname(callerPath()), id2);
 	const id2Dir = path.dirname(id2Path);
+	const id3Path = resolveFrom(path.dirname(callerPath()), id3);
+	const id3Dir = path.dirname(id3Path);
 	console.log(id2Dir);
-	const scriptsCachedBeforeRequire = Object.keys(require.cache).length; // 5
-	require(id2)();
+	console.log(id3Dir);
 	const scriptsCachedAfterRequire = Object.keys(require.cache).length; // 176
 	console.log(scriptsCachedBeforeRequire);
 	console.log(scriptsCachedAfterRequire);
