@@ -16,6 +16,7 @@ const clear = (moduleId, options = {}) => {
 
 	// Delete its descendants from module
 	if (options.children && require.cache[filePath] && require.cache[filePath].children) {
+        // Comment
 		let parent = require.cache[filePath];
 
 		while (parent.id !== filePath || (parent.children && parent.children.length)) {
