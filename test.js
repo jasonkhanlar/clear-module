@@ -22,6 +22,7 @@ test('clearModule("fixture", {children: true})', t => {
 	const id2 = 'request';
 	const id2Path = resolveFrom(path.dirname(callerPath()), id2);
 	const id2Dir = path.dirname(id2Path);
+    console.log(id2Dir);
 	const scriptsCachedBeforeRequire = Object.keys(require.cache).length; // 5
 	require('request');
 	const scriptsCachedAfterRequire = Object.keys(require.cache).length; // 176
