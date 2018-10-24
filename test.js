@@ -10,14 +10,17 @@ test('clearModule()', t => {
 });
 
 test('clearModule("fixture", { children: true })', t => {
+	// t === ExecutionContext {}
 	console.log('what is t.is', t.is);
+	console.log('what are t keys', Object.keys(t));
+	console.log('what are t values', Object.values(t));
 	const id = './fixturefail';
-    // What does this do?
+	// What does this do?
 	t.is(require(id)(), 1);
-    // What does this do?
+	// What does this do?
 	t.is(require(id)(), 2);
 	m(id, {children: true});
-    // What does this do?
+	// What does this do?
 	t.is(require(id)(), 1);
 });
 
