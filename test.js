@@ -10,13 +10,16 @@ test('clearModule()', t => {
 });
 
 test('clearModule("fixture", { children: true })', t => {
-	console.log('what is t', t);
-	console.log('what is m', m);
+	console.log('what is t.is', t.is);
+	console.log('what is t.is.toString', t.is.toString());
 	console.log('what is m.toString', m.toString());
 	const id = './fixturefail';
+    // What does this do?
 	t.is(require(id)(), 1);
+    // What does this do?
 	t.is(require(id)(), 2);
-	m(id);
+	m(id, { children: true });
+    // What does this do?
 	t.is(require(id)(), 1);
 });
 
