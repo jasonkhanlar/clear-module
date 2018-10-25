@@ -44,6 +44,6 @@ test('clearModule("fixture", {children: true})', t => {
 	const scriptsCachedAfterRequire = Object.keys(require.cache).length; // 176
 	console.log(scriptsCachedBeforeRequire);
 	console.log(scriptsCachedAfterRequire);
-	t.is(require(id)(), 13);
+	t.is(require(id1)(), 13);
 });
 
