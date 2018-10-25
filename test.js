@@ -11,7 +11,7 @@ test('clearModule()', t => {
 
 test('clearModule("fixture", {children: true})', t => {
 	const id = './fixture';
-    console.log('breq', require(id)());
+	console.log('breq', require(id)());
 	t.is(require(id)(), 1);
 	t.is(require(id)(), 2);
 	m(id);
